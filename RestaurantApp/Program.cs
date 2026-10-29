@@ -14,6 +14,8 @@ namespace RestaurantApp
             Console.WriteLine("Week 2");
             Console.WriteLine("-----------------------");
 
+            //Restaurant Res1 = new Restaurant();
+
 
             List<Restaurant> restaurants = new List<Restaurant>
             {
@@ -24,11 +26,15 @@ namespace RestaurantApp
                 new Restaurant(5, "Haidilao Hot Pot", "Hot Pot", 4.8)
             };
 
+            //int total = Restaurant.GetTotalRes();
+
             Console.WriteLine("รายชื่อร้านอาหารทั้งหมด");
             foreach (var item in restaurants)
             {
                 Console.WriteLine($"ID: {item.Id} | ร้าน: {item.Name} | ประเภท: {item.Type} | คะแนน: {item.Score}");
             }
+
+
         }
     }
 
@@ -46,5 +52,26 @@ namespace RestaurantApp
             Type = type;
             Score = score;
         }
+        private List<string> ResList;
+        public Restaurant()
+        {
+            ResList = new List<string>();
+        }
+        public void AddRes(string name)
+        {
+            ResList.Add(name);
+        }
+
+        public int GetTotalRes()
+        {
+            return ResList.Count();
+        }
+
+        public int CountResStartingWith(char r)
+        {
+            return ResList.Count(rs => rs.StartsWith(rs, StringComparison.OrdinalIgnoreCase));
+        }
+
+
     }
-}
+   }
